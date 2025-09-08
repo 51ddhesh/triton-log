@@ -82,16 +82,16 @@ def _layer_norm_fwd_fused(
 ### The Backward Pass
 #### The Backward Pass
 
-The Vector Jacobian Products (VJP) of x ($\triangledown_x$) are given by:
+The Vector Jacobian Products (VJP) of x ($`\triangledown_x`$) are given by:
 ```math
 
 \triangledown_x = \frac{1}{\sigma} \left( \triangledown_y \odot w - \left( \frac{1}{N} \hat{x} \cdot \left( \triangledown_y \odot w \right) \right) \odot \hat{x} - \frac{1}{N} \triangledown_y \cdot w \right)
 
 ```
 
-Where the [$\odot$] denotes element wise multiplication, the [$\cdot$] represents the dot product and [$\sigma$] is the standard deviation.
+Where the [$`\odot`$] denotes element wise multiplication, the [$`\cdot`$] represents the dot product and [$`\sigma`$] is the standard deviation.
 
-For the weights $w$ and the biases $b$, the VJPs $\triangledown_w$ and $\triangledown_b$ are more straightforward:
+For the weights $`w`$ and the biases $`b`$, the VJPs $`\triangledown_w`$ and $`\triangledown_b`$ are more straightforward:
 
 ```math
 \triangledown_w = \triangledown_y \odot \hat{x} 
